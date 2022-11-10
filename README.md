@@ -1,3 +1,3 @@
 for developer: 
->> git clone
->> npm install
+1. \>> git clone
+2. \>> npm install
