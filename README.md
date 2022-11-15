@@ -1,3 +1,6 @@
+- Author:
+  - Gaoxiang Zhang & Ming Hsiu Lee
+
 - Objective:
   - A web application for minting new NFTs. Users will be able to mint new NFT, name the NFT, search the NFT by name from all NFTs minted on this platform. Users can rename the NFT’s name that displays on this site.
 
