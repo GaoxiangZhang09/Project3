@@ -166,7 +166,7 @@ const deleteMintById = async (id) => {
 
         {/* effets happen when onClick mint btn */}
         <div className="col-12">
-          <button onClick={mintResult} >Mint</button>
+          <button id="mint-button" onClick={mintResult} >Mint</button>
         </div>
         
         <div className="col-12">
