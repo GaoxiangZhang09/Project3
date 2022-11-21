@@ -9,8 +9,9 @@ const router = express.Router();
 router.post("/addMINT", async (req, res) => {
   let number = req.body.number;
   let date = req.body.date;
+  let name = req.body.name;
   console.log(number, date);
-  await DB.addMint(number, date);
+  await DB.addMint(name, number, date);
   res.send(`/addMint added ${number} when ${date}`);
 });
 
@@ -25,7 +26,7 @@ router.post("/updateMintNameById", async (req, res) => {
   let target_id = req.body._id;
   let new_name = req.body.new_name;
   console.log("router/updateMintNameById", target_id, new_name)
-  await DB.updateCommentById(target_id, new_name);
+  await DB.updateMintNameById(target_id, new_name);
   res.send(`/updateMintNameById ${target_id} to ${new_name}`);
 });
 

@@ -18,9 +18,9 @@ function myMongoDB() {
 // MINTING
 /////////////////
 // CREATE
-myDB.addMint = async function (input_number, input_date) {
+myDB.addMint = async function (input_name, input_number, input_date) {
   await client.connect();
-  const doc = { number: input_number, date: input_date };
+  const doc = { name: input_name, number: input_number, date: input_date };
   const result = await mints.insertOne(doc);
   console.log(`A mint was inserted with the _id: ${result.insertedId}`);
   await client.close();
@@ -40,7 +40,7 @@ myDB.findAllMints = async function () {
 myDB.updateMintNameById = async function (target_id, new_name) {
   await client.connect();
   const filter = { _id: ObjectId(target_id) };
-  const updateDocument = { $set: { comment: new_name } };
+  const updateDocument = { $set: { name: new_name } };
   const options = { upsert: true };
   console.log("DB/updateMintNameById", filter, updateDocument);
   const res = await mints.updateOne(filter, updateDocument, options);

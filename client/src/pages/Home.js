@@ -6,6 +6,7 @@ import Homehistory from "../components/Home/Homehistory";
 
 
 function Home( ) {
+  const [name, setName] = useState(0);
   const [number, setNumber] = useState(null);
   const [mintDate, setMintDate] = useState(null)
   let [date, setDate] = useState(null)
@@ -19,26 +20,25 @@ function Home( ) {
     },1000)
   },[])
 
-  // SET THE NUMBER AND TIME OF THIS MINT
+  // SET THE NAME NUMBER AND TIME OF THIS MINT
   function mintResult(){
     setNumber(nanoid())
     setMintDate(Date())
+    setName(() => name + 1)
   }
 
   // UPDATE THIS MINT HISTORY
   useEffect(()=>{
-    setMintHistory({number: number, mintDate: mintDate})
-  }, [number, mintDate]);
-
-
-  
+    setMintHistory({ name: name, number: number, mintDate: mintDate})
+  }, [number]);
 
   // CREATE
   const addMint = async () => {
-    async function fetchPOST_addMint(input_number, input_date) {
+    async function fetchPOST_addMint(input_name ,input_number, input_date) {
       let data = new URLSearchParams();
       // URLSearchParams() take the current URL and get the object after "?"
       // https://googlechrome.github.io/samples/urlsearchparams/
+      data.append("name", input_name);
       data.append("number", input_number);
       data.append("date", input_date);
 
@@ -49,7 +49,7 @@ function Home( ) {
       })
         .then((res) => res.text())
         .then((txt) => {
-          setMintHistorys([...mintHistorys, {number: number, date: mintDate}])
+          // setMintHistorys([...mintHistorys, {name: name, number: number, date: mintDate}])
           console.log(txt);
           console.log(mintHistorys)
         })
@@ -58,7 +58,7 @@ function Home( ) {
           alert("it doesn't worked!")
         });
     }
-    await fetchPOST_addMint(number, mintDate);
+    await fetchPOST_addMint(name, number, mintDate);
   };
 
   // READ
@@ -76,6 +76,7 @@ function Home( ) {
     }
     fetchGET_findAllMints();
     setMintHistorys([mintHistory, ...mintHistorys]);
+    console.log("setMintHistory")
     if (number !== null && mintDate !== null){
       addMint();
     }
@@ -98,31 +99,31 @@ const updateMintNameById = async (id) => {
       .then((txt) => {
         console.log(txt);
         setMintHistorys(mintHistorys.map((val) => {
-          return val._id === id ? {_id: id, name:val.name, comment:newComment} : val
+          return val._id === id ? {_id: id, name: newName , number:val.number, date:date} : val
         }))
       })
       .catch((err) => {
         console.log(err);
       });
   }
-  await fetchPOST_updateCommentById(id, newComment);
+  await fetchPOST_updateMintNameById(id, newName);
 }
 
 // DELETE
-const deleteFriend = async (id) => {
-  async function fetchPOST_deleteById(target_id) {
+const deleteMintById = async (id) => {
+  async function fetchPOST_deleteMintById(target_id) {
     let data = new URLSearchParams();
     data.append("_id", target_id);
 
     // fetch("https://five610-project3-server.onrender.com/deleteById", {
-    fetch("http://localhost:3001/deleteById", {
+    fetch("http://localhost:3001/deleteMintById", {
       method: "post",
       body: data,
     })
       .then((res) => res.text())
       .then((txt) => {
         console.log(txt);
-        setListOfFriends(listOfFriends.filter((val) => {
+        setMintHistorys(mintHistorys.filter((val) => {
           return val._id !== id;
         }))
       })
@@ -130,7 +131,7 @@ const deleteFriend = async (id) => {
         console.log(err);
       });
   }
-  fetchPOST_deleteById(id)
+  fetchPOST_deleteMintById(id)
 }
 
   return (
@@ -169,11 +170,15 @@ const deleteFriend = async (id) => {
         </div>
         
         <div className="col-12">
-            <HomeMintResult number={number} mintDate={mintDate} />
+            <HomeMintResult name={name} number={number} mintDate={mintDate} />
         </div> 
 
         <div className="col-12">
-          <Homehistory history={mintHistorys} />
+          <Homehistory 
+            history={mintHistorys} 
+            deleteMintById={deleteMintById} 
+            updateMintNameById={updateMintNameById}
+           />
         </div> 
 
       </div>

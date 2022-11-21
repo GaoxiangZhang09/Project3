@@ -6,13 +6,13 @@ export default function Homehistory(props) {
   return (
     <ul>
       {
-        historys.map((history)=>{
+        historys.map((thisHistory)=>{
             // console.log(history)
             // return <HomeHistoryItem key= {history.number} number={history.number} mintDate={history.mintDate} />
             // use 批量传递props 
           
             return(
-              <HomeHistoryItem key={history.number} {...history}/>
+              <HomeHistoryItem key={thisHistory.number} thisHistory={thisHistory} {...props} />
               )
         })
       }

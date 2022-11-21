@@ -4,7 +4,6 @@ import { Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css"
 
 import Home from "./pages/Home";
-import Communication from "./pages/Communication";
 import NewCommu from "./pages/NewCommu";
 import Rubric from "./pages/Rubric";
 import Layout from "./components/Layout/Layout";

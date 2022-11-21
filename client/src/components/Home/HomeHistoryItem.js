@@ -1,12 +1,17 @@
 import React from 'react'
 
 export default function HomeMintResultItem(props) {
-  // console.log()
+  // console.log(props.thisHistory)
+  const history = props.thisHistory
+  const deleteMintById = props.deleteMintById 
+  const updateMintNameById = props.updateMintNameById
   return (
     <li>
-      <h2>Number: <span>{props.number}</span></h2>
-      <h2>MintDate: <span>{props.date}</span></h2>
-        <button className='btn btn-danger' style={{display:'none'}}>Delete</button>
+      <h3>Name: <span>{history.name}</span></h3>
+      <h3>Number: <span>{history.number}</span></h3>
+      <h3>MintDate: <span>{history.date}</span></h3>
+        <button className='btn btn-info' onClick={()=>updateMintNameById(history._id)} >Update Name</button>
+        <button className='btn btn-danger' onClick={()=>deleteMintById(history._id)} >Delete</button>
     </li>
   )
 }
