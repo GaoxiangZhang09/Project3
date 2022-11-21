@@ -13,4 +13,5 @@ var name2 = ["people","history","way","art","world","information","map","family"
 
 var name = capFirst(name1[getRandomInt(0, name1.length + 1)]) + ' ' + capFirst(name2[getRandomInt(0, name2.length + 1)]);
 return (name)
+
 }
