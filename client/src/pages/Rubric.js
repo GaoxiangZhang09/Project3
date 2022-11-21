@@ -32,5 +32,7 @@ function Rubric() {
     </div>
   );
 }
-
+// Rubric.propTypes = {
+//   ******: PropTypes.array,
+// };
 export default Rubric;

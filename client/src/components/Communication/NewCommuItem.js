@@ -1,4 +1,5 @@
 import React from 'react'
+import {nanoid} from "nanoid"
 
 export default function NewCommuItem(props) {
   const listOfFriends = props.listOfFriends;
@@ -15,7 +16,7 @@ export default function NewCommuItem(props) {
         } */}
           {listOfFriends.map((val) => {
           return (
-            <div key={val._id}>
+            <div key={nanoid()}>
               <div> {val.name} : {val.comment}</div>
               <button onClick={() => {updateFriend(val._id)}} >update message</button>
               <button onClick={() => {deleteFriend(val._id)}}>X</button>

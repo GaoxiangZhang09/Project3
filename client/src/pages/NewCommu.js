@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from 'prop-types';
 import NewCommuItem from "../components/Communication/NewCommuItem";
 import { loremIpsum } from "lorem-ipsum";
 import names from "./names.js"
@@ -149,5 +150,9 @@ useEffect(() => {
     </div>
   );
 }
-
+NewCommu.propTypes = {
+  listOfFriends: PropTypes.array,
+  deleteFriend: PropTypes.func,
+  updateFriend: PropTypes.func
+};
 export default NewCommu;
