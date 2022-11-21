@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import {nanoid} from "nanoid"
+import PropTypes from 'prop-types';// import propTypes from "eslint-plugin-react/lib/rules/prop-types";
 import HomePageImg from "../images/HomePageImg.jpeg";
 import HomeMintResult from "../components/Home/HomeMintResult";
 import Homehistory from "../components/Home/Homehistory";
+import nameForUsers from "../nameForUsers/nameForUsers.js";
 
 
 function Home( ) {
@@ -24,7 +26,7 @@ function Home( ) {
   function mintResult(){
     setNumber(nanoid())
     setMintDate(Date())
-    setName(() => name + 1)
+    setName(() => nameForUsers())
   }
 
   // UPDATE THIS MINT HISTORY
@@ -186,9 +188,14 @@ const deleteMintById = async (id) => {
   );
 }
 
-// Home.propTypes = {
-//   HomeMintResult: propTypes.array,
-//   Homehistory: propTypes.array,
-// };
+Home.propTypes = {
+  name: PropTypes.string,
+  number: PropTypes.string,
+  mintDate: PropTypes.string,
+  history: PropTypes.object,
+  deleteMintHistory: PropTypes.func,
+  updateMintNameById: PropTypes.func
+};
+
 
 export default Home;

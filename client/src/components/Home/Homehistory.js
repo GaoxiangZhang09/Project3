@@ -1,7 +1,9 @@
 import React from 'react'
 import HomeHistoryItem from './HomeHistoryItem'
+import {nanoid} from "nanoid"
+import PropTypes from 'prop-types';
 
-export default function Homehistory(props) {
+function Homehistory(props) {
   const historys = props.history
   return (
     <ul>
@@ -12,10 +14,17 @@ export default function Homehistory(props) {
             // use 批量传递props 
           
             return(
-              <HomeHistoryItem key={thisHistory.number} thisHistory={thisHistory} {...props} />
+              <HomeHistoryItem key= {nanoid()} thisHistory={thisHistory} {...props} />
               )
         })
       }
     </ul>
   )
+
 }
+
+Homehistory.propTypes = {
+  thisHistory: PropTypes.object
+};
+
+export default Homehistory;
