@@ -16,16 +16,16 @@ router.post("/addMINT", async (req, res) => {
 });
 
 // READ
-router.get("/findAllMints", async(req, res) => {
+router.get("/findAllMints", async (req, res) => {
   let respond = await DB.findAllMints();
   res.send(respond);
-})
+});
 
 // UPDATE
 router.post("/updateMintNameById", async (req, res) => {
   let target_id = req.body._id;
   let new_name = req.body.new_name;
-  console.log("router/updateMintNameById", target_id, new_name)
+  console.log("router/updateMintNameById", target_id, new_name);
   await DB.updateMintNameById(target_id, new_name);
   res.send(`/updateMintNameById ${target_id} to ${new_name}`);
 });
@@ -33,8 +33,8 @@ router.post("/updateMintNameById", async (req, res) => {
 // DELETE
 router.get("/cleanMintDB", async (req, res) => {
   await DB.cleanMintDB();
-  res.send("Mints data base is empty")
-})
+  res.send("Mints data base is empty");
+});
 
 router.post("/deleteMintById", async (req, res) => {
   let target_id = req.body._id;
@@ -64,16 +64,16 @@ router.post("/findFriendByName", async (req, res) => {
   );
 });
 
-router.get("/findAllFriends", async(req, res) => {
+router.get("/findAllFriends", async (req, res) => {
   let respond = await DB.findAllFriends();
   res.send(respond);
-})
+});
 
 // UPDATE
 router.post("/updateCommentById", async (req, res) => {
   let target_id = req.body._id;
   let new_comment = req.body.comment;
-  console.log("router/updateCommentById", target_id, new_comment)
+  console.log("router/updateCommentById", target_id, new_comment);
   await DB.updateCommentById(target_id, new_comment);
   res.send(`/updateCommentById ${target_id} to ${new_comment}`);
 });
@@ -87,7 +87,7 @@ router.post("/deleteById", async (req, res) => {
 
 router.get("/cleanDB", async (req, res) => {
   await DB.cleanDB();
-  res.send("data base is empty")
-})
+  res.send("data base is empty");
+});
 
 export default router;

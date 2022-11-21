@@ -3,8 +3,8 @@
 //////////////////////
 import bodyParser from "body-parser";
 import express from "express";
-import router from "./router/router.js"
-import cors from 'cors';
+import router from "./router/router.js";
+import cors from "cors";
 import dotenv from "dotenv";
 dotenv.config();
 

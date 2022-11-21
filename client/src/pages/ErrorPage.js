@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react";
 
-import PageNotFound404 from "../images/PageNotFound404.png"
+import PageNotFound404 from "../images/PageNotFound404.png";
 
 export default function ErrorPage() {
   return (
@@ -20,5 +20,5 @@ export default function ErrorPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }
