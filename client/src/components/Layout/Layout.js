@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import MainNavigation from "./MainNavigation";
 import classes from "./Layout.module.css";
 
