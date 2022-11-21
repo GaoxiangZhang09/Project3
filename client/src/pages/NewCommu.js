@@ -28,7 +28,7 @@ const addFriend = async () => {
         .then((res) => res.text())
         .then((txt) => {
           console.log(txt);
-          setListOfFriends([...listOfFriends, {name: name, comment: comment}])
+          setListOfFriends([{name: name, comment: comment},...listOfFriends])
           // console.log("addFriend()",listOfFriends)
         })
         .catch((err) => {
@@ -62,7 +62,7 @@ const addTonsOfFriends = async () => {
   function commentGenerator () {
     return loremIpsum();
   }
-    for (let i = 0; i < 500; i++) {
+    for (let i = 0; i < 100; i++) {
       let name = nameGenerator();
       let comment = commentGenerator();
       console.log("auto gnerate name and comment",name, comment)
@@ -137,7 +137,7 @@ useEffect(() => {
       .catch((err) => { console.log(err) });
   }
   fetchGET_findAllFriends();
-}, [listOfFriends.length])
+}, [])
 
   return (
     <div>

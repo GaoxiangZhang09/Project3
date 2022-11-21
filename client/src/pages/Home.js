@@ -40,11 +40,11 @@ function Home( ) {
         body: data,
       }).catch((err) => {
           console.log(err);
-          alert("it doesn't worked!")
+          console.log("it doesn't worked!")
         });
     }
     for (let i = 0; i < 50; i ++) {
-      await fetchPOST_addMint(i, nanoid(), Date());
+      await fetchPOST_addMint(nameForUsers(), nanoid(), Date());
       console.log("yeaah")
     }
   }
@@ -70,14 +70,9 @@ function Home( ) {
         body: data,
       })
         .then((res) => res.text())
-        .then((txt) => {
-          // setMintHistorys([...mintHistorys, {name: name, number: number, date: mintDate}])
-          console.log(txt);
-          console.log(mintHistorys)
-        })
         .catch((err) => {
           console.log(err);
-          alert("it doesn't worked!")
+          console.log("it doesn't worked!")
         });
     }
     await fetchPOST_addMint(name, number, mintDate);
@@ -96,7 +91,7 @@ function Home( ) {
         })
         .catch((err) => { console.log(err) });
     }
-    fetchGET_findAllMints();
+    if (mintHistorys.length === 0) {fetchGET_findAllMints()}
     setMintHistorys([mintHistory, ...mintHistorys]);
     console.log("setMintHistory")
     if (number !== null && mintDate !== null){
