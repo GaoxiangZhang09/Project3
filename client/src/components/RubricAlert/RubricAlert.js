@@ -1,4 +1,4 @@
-export default function RubricAlert(props) {
+function RubricAlert(props) {
   const rubricData = [
     ["Design document"],
     ["Does the app accomplish all the requirements approved in #project   15"],
@@ -72,3 +72,7 @@ export default function RubricAlert(props) {
     </div>
   );
 }
+
+RubricAlert.propTypes = {};
+
+export default RubricAlert;

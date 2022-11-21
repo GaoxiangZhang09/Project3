@@ -1,4 +1,4 @@
-export default function HomeMintResult(props) {
+function HomeMintResult(props) {
   return (
     <div>
       <h2>The minting result is: {props.number}</h2>
@@ -6,3 +6,7 @@ export default function HomeMintResult(props) {
     </div>
   );
 }
+
+HomeMintResult.propTypes = {};
+
+export default HomeMintResult;

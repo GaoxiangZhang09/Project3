@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
@@ -25,5 +26,7 @@ function App() {
     </div>
   );
 }
+
+App.propTypes = {};
 
 export default App;

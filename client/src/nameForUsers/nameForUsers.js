@@ -1,3 +1,6 @@
+//////////////////
+//This is a helper fucnction, not a component
+//////////////////
 function capFirst(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }

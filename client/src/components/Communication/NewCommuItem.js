@@ -1,6 +1,5 @@
 import { nanoid } from "nanoid";
-
-export default function NewCommuItem(props) {
+function NewCommuItem(props) {
   const listOfFriends = props.listOfFriends;
   const deleteFriend = props.deleteFriend;
   const updateFriend = props.updateFriend;
@@ -40,3 +39,7 @@ export default function NewCommuItem(props) {
     </div>
   );
 }
+
+NewCommuItem.propTypes = {};
+
+export default NewCommuItem;

@@ -1,4 +1,6 @@
+//////////////////
 //This is a helper object which include our Name library
+//////////////////
 let names = [
   "Drew Hargrove",
   "Christina Quarles",

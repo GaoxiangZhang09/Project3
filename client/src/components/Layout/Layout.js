@@ -10,4 +10,7 @@ function Layout(props) {
     </div>
   );
 }
+
+Layout.propTypes = {};
+
 export default Layout;

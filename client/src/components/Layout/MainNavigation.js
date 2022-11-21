@@ -28,4 +28,6 @@ function MainNavigation() {
   );
 }
 
+MainNavigation.propTypes = {};
+
 export default MainNavigation;

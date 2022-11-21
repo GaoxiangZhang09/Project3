@@ -1,6 +1,5 @@
 import { useState } from "react";
-
-export default function HomeMintResultItem(props) {
+function HomeMintResultItem(props) {
   // console.log(props.thisHistory)
   const [mouse, setMouse] = useState(false);
   const history = props.thisHistory;
@@ -45,3 +44,7 @@ export default function HomeMintResultItem(props) {
     </div>
   );
 }
+
+HomeMintResultItem.propTypes = {};
+
+export default HomeMintResultItem;

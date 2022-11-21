@@ -102,4 +102,6 @@ function Rubric() {
   );
 }
 
+Rubric.propTypes = {};
+
 export default Rubric;
