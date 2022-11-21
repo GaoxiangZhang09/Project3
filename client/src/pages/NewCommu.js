@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import NewCommuItem from "../components/Communication/NewCommuItem";
+import { loremIpsum } from "lorem-ipsum";
+import names from "./names.js"
 
 function NewCommu() {
 
@@ -26,7 +28,7 @@ const addFriend = async () => {
         .then((txt) => {
           console.log(txt);
           setListOfFriends([...listOfFriends, {name: name, comment: comment}])
-          console.log(listOfFriends)
+          // console.log("addFriend()",listOfFriends)
         })
         .catch((err) => {
           console.log(err);
@@ -35,6 +37,38 @@ const addFriend = async () => {
     }
     await fetchPOST_addFriend(name, comment);
 };
+
+const addTonsOfFriends = async () => {
+  async function fetchPOST_addFriend(input_name, input_comment) {
+    let data = new URLSearchParams();
+    // URLSearchParams() take the current URL and get the object after "?"
+    // https://googlechrome.github.io/samples/urlsearchparams/
+    data.append("name", input_name);
+    data.append("comment", input_comment);
+
+  //   await fetch("https://five610-project3-server.onrender.com/addFriend", {
+    await fetch("http://localhost:3001/addFriend", {
+      method: "post",
+      body: data,
+    })
+      .catch((err) => {
+        console.log(err);
+        alert("it doesn't worked!")
+      });
+  }
+
+  function nameGenerator () { return names[Math.floor(Math.random() * (names.length))]}
+  function commentGenerator () {
+    return loremIpsum();
+  }
+    for (let i = 0; i < 500; i++) {
+      let name = nameGenerator();
+      let comment = commentGenerator();
+      console.log("auto gnerate name and comment",name, comment)
+      await fetchPOST_addFriend(name, comment);
+    }
+}
+
 
 // UPDATE
 const updateFriend = async (id) => {
@@ -106,10 +140,11 @@ useEffect(() => {
 
   return (
     <div>
-      <button id="mint-button">Public mint</button>
+
       <input type="text" placeholder='User name...' onChange={(e) => {setName(e.target.value)}} />
       <input type="text" placeholder='Make a comment...' onChange={(e) => {setComment(e.target.value)}} />
-      <button onClick={addFriend}>add friend</button>
+      <button onClick={addFriend}>add comment</button>
+      <button onClick={addTonsOfFriends}>add Tons of comments</button>
       <NewCommuItem listOfFriends={listOfFriends} deleteFriend={deleteFriend} updateFriend={updateFriend} />
     </div>
   );

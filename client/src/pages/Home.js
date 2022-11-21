@@ -20,11 +20,31 @@ function Home( ) {
     },1000)
   },[])
 
-  // SET THE NAME NUMBER AND TIME OF THIS MINT
+  // SET THE NAME NUMBER AND TIME OF THIS MINT (can use to populate DB)
   function mintResult(){
     setNumber(nanoid())
     setMintDate(Date())
     setName(() => name + 1)
+  }
+
+  const mintAlot =  async () => {
+    async function fetchPOST_addMint(input_name ,input_number, input_date) {
+      let data = new URLSearchParams();
+      data.append("name", input_name);
+      data.append("number", input_number);
+      data.append("date", input_date);
+      await fetch("http://localhost:3001/addMint", {
+        method: "post",
+        body: data,
+      }).catch((err) => {
+          console.log(err);
+          alert("it doesn't worked!")
+        });
+    }
+    for (let i = 0; i < 50; i ++) {
+      await fetchPOST_addMint(i, nanoid(), Date());
+      console.log("yeaah")
+    }
   }
 
   // UPDATE THIS MINT HISTORY
@@ -167,6 +187,7 @@ const deleteMintById = async (id) => {
         {/* effets happen when onClick mint btn */}
         <div className="col-12">
           <button id="mint-button" onClick={mintResult} >Mint</button>
+          <button onClick={mintAlot} >Mint Alot</button>
         </div>
         
         <div className="col-12">
