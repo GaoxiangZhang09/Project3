@@ -51,8 +51,8 @@ A NFT app built with React, Node.js, Express.js, MongoDB, HTML, CSS, Javascript.
 - [Design Document](https://docs.google.com/document/d/1tqy1tNADoKdp11se8rgJYNIq1UeA40SFCziXdmGF6Cg/edit#)
 
 ## Video
-- [MinghshuLee] (https://www.youtube.com/watch?v=vuKLY8rY4-s)
-- [GaoxiangZhang]（https://youtu.be/gbM_RVxbr8g）
+- [MinghshuLee](https://www.youtube.com/watch?v=vuKLY8rY4-s)
+- [GaoxiangZhang](https://youtu.be/gbM_RVxbr8g)
 
 ## Authors
 - Minghshu Lee
