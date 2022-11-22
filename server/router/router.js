@@ -74,7 +74,12 @@ router.get("/findAllFriends", async (req, res) => {
 router.post("/updateCommentById", async (req, res) => {
   let target_id = req.body._id;
   let new_comment = req.body.comment;
-  console.log("router/updateCommentById", target_id, new_comment);
+  console.log(
+    "router/updateCommentById: req.body / target_id / new_comment",
+    req.body,
+    target_id,
+    new_comment
+  );
   await commuDB.updateCommentById(target_id, new_comment);
   res.send(`/updateCommentById ${target_id} to ${new_comment}`);
 });
@@ -82,6 +87,7 @@ router.post("/updateCommentById", async (req, res) => {
 // DELETE
 router.post("/deleteById", async (req, res) => {
   let target_id = req.body._id;
+  console.log("router/deleteById: target_id ", req.body._id);
   await commuDB.deleteById(target_id);
   res.send(`/deleteFriends ${target_id}`);
 });

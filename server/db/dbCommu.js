@@ -38,7 +38,7 @@ function myCommuDB() {
 
   myDB.findAllFriends = async function () {
     await client.connect();
-    const cursor = friends.find({});
+    const cursor = friends.find({}).sort({ _id: -1 });
     const allValues = await cursor.toArray();
     console.log(allValues);
     await client.close();

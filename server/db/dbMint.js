@@ -27,7 +27,7 @@ function myMintDB() {
   // READ
   myDB.findAllMints = async function () {
     await client.connect();
-    const cursor = mints.find({});
+    const cursor = mints.find({}).sort({ _id: -1 });
     const allValues = await cursor.toArray();
     console.log(allValues);
     await client.close();

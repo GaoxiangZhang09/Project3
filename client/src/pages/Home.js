@@ -11,23 +11,16 @@ function Home() {
   const [number, setNumber] = useState(null);
   const [mintDate, setMintDate] = useState(null);
   let [date, setDate] = useState(null);
-  let [mintHistory, setMintHistory] = useState({});
   let [mintHistorys, setMintHistorys] = useState([]);
 
   // SHOW CURRENT TIME
   useEffect(() => {
     setInterval(() => {
-      setDate((date1) => Date());
+      setDate(() => Date());
     }, 1000);
   }, []);
 
-  // SET THE NAME NUMBER AND TIME OF THIS MINT (can use to populate DB)
-  function mintResult() {
-    setNumber(nanoid());
-    setMintDate(Date());
-    setName(() => nameForUsers());
-  }
-
+  // CREATE
   const mintAlot = async () => {
     async function fetchPOST_addMint(input_name, input_number, input_date) {
       let data = new URLSearchParams();
@@ -36,7 +29,7 @@ function Home() {
       data.append("date", input_date);
       await fetch("http://localhost:3001/addMint", {
         method: "post",
-        body: data,
+        body: data
       }).catch((err) => {
         console.log(err);
         console.log("it doesn't worked!");
@@ -48,13 +41,14 @@ function Home() {
     }
   };
 
-  // UPDATE THIS MINT HISTORY
-  useEffect(() => {
-    setMintHistory({ name: name, number: number, mintDate: mintDate });
-  }, [number]);
+  const mintResult = (number, date, name) => {
+    setNumber(number);
+    setMintDate(date);
+    setName(name);
+  };
 
-  // CREATE
   const addMint = async () => {
+    // SET THE NAME NUMBER AND TIME OF THIS MINT (can use to populate DB)
     async function fetchPOST_addMint(input_name, input_number, input_date) {
       let data = new URLSearchParams();
       // URLSearchParams() take the current URL and get the object after "?"
@@ -66,7 +60,7 @@ function Home() {
       //   await fetch("https://five610-project3-server.onrender.com/addMint", {
       await fetch("http://localhost:3001/addMint", {
         method: "post",
-        body: data,
+        body: data
       })
         .then((res) => res.text())
         .catch((err) => {
@@ -74,33 +68,37 @@ function Home() {
           console.log("it doesn't worked!");
         });
     }
-    await fetchPOST_addMint(name, number, mintDate);
+    let nameA = nameForUsers();
+    let numberA = nanoid();
+    let dateA = Date();
+    mintResult(numberA, dateA, nameA);
+    await fetchPOST_addMint(nameA, numberA, dateA);
+    await fetchGET_findAllMints();
   };
 
   // READ
   // update all mint historys
+  async function fetchGET_findAllMints() {
+    // await fetch("https://five610-project3-server.onrender.com/findAllFriends")
+    await fetch("http://localhost:3001/findAllMints")
+      .then((res) => res.json())
+      .then((txt) => {
+        setMintHistorys(txt);
+        console.log(txt);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   useEffect(() => {
-    async function fetchGET_findAllMints() {
-      // await fetch("https://five610-project3-server.onrender.com/findAllFriends")
-      await fetch("http://localhost:3001/findAllMints")
-        .then((res) => res.json())
-        .then((txt) => {
-          setMintHistorys(txt);
-          console.log(txt);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    async function updateThis() {
+      if (mintHistorys.length === 0) {
+        await fetchGET_findAllMints();
+      }
     }
-    if (mintHistorys.length === 0) {
-      fetchGET_findAllMints();
-    }
-    setMintHistorys([mintHistory, ...mintHistorys]);
-    console.log("setMintHistory");
-    if (number !== null && mintDate !== null) {
-      addMint();
-    }
-  }, [mintHistory]);
+    updateThis();
+  }, []);
 
   // UPDATE
   const updateMintNameById = async (id) => {
@@ -113,7 +111,7 @@ function Home() {
       // await fetch("https://five610-project3-server.onrender.com/updateCommentById", {
       await fetch("http://localhost:3001/updateMintNameById", {
         method: "post",
-        body: data,
+        body: data
       })
         .then((res) => res.text())
         .then((txt) => {
@@ -142,7 +140,7 @@ function Home() {
       // fetch("https://five610-project3-server.onrender.com/deleteById", {
       fetch("http://localhost:3001/deleteMintById", {
         method: "post",
-        body: data,
+        body: data
       })
         .then((res) => res.text())
         .then((txt) => {
@@ -176,7 +174,7 @@ function Home() {
             style={{
               height: "100%",
               width: "100%",
-              objectFit: "contain",
+              objectFit: "contain"
             }}
             src={HomePageImg}
             alt="Nice nft mining website"
@@ -193,7 +191,7 @@ function Home() {
 
         {/* effets happen when onClick mint btn */}
         <div className="col-12">
-          <button id="mint-button" onClick={mintResult}>
+          <button id="mint-button" onClick={addMint}>
             Mint
           </button>
           <button onClick={mintAlot}>Mint Alot</button>
@@ -221,7 +219,7 @@ Home.propTypes = {
   mintDate: PropTypes.string,
   history: PropTypes.object,
   deleteMintHistory: PropTypes.func,
-  updateMintNameById: PropTypes.func,
+  updateMintNameById: PropTypes.func
 };
 
 export default Home;

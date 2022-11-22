@@ -22,17 +22,11 @@ function NewCommu() {
       //   await fetch("https://five610-project3-server.onrender.com/addFriend", {
       await fetch("http://localhost:3001/addFriend", {
         method: "post",
-        body: data,
+        body: data
       })
-        // .then(()=>alert("yey it worked!"))
         .then((res) => res.text())
         .then((txt) => {
           console.log(txt);
-          setListOfFriends([
-            { name: name, comment: comment },
-            ...listOfFriends,
-          ]);
-          // console.log("addFriend()",listOfFriends)
         })
         .catch((err) => {
           console.log(err);
@@ -40,6 +34,7 @@ function NewCommu() {
         });
     }
     await fetchPOST_addFriend(name, comment);
+    await fetchGET_updateAllFriends();
   };
 
   const addTonsOfFriends = async () => {
@@ -53,7 +48,7 @@ function NewCommu() {
       //   await fetch("https://five610-project3-server.onrender.com/addFriend", {
       await fetch("http://localhost:3001/addFriend", {
         method: "post",
-        body: data,
+        body: data
       }).catch((err) => {
         console.log(err);
         alert("it doesn't worked!");
@@ -85,7 +80,7 @@ function NewCommu() {
       // await fetch("https://five610-project3-server.onrender.com/updateCommentById", {
       await fetch("http://localhost:3001/updateCommentById", {
         method: "post",
-        body: data,
+        body: data
       })
         .then((res) => res.text())
         .then((txt) => {
@@ -105,6 +100,28 @@ function NewCommu() {
     await fetchPOST_updateCommentById(id, newComment);
   };
 
+  async function fetchGET_updateAllFriends() {
+    // await fetch("https://five610-project3-server.onrender.com/findAllFriends")
+    await fetch("http://localhost:3001/findAllFriends")
+      .then((res) => res.json())
+      .then((txt) => {
+        setListOfFriends(txt);
+        console.log(txt);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  // everytime the listOfFriends state change
+  // fetch all data from database again, and rerender
+  useEffect(() => {
+    async function updateThis() {
+      await fetchGET_updateAllFriends();
+    }
+    updateThis();
+  }, []);
+
   // DELETE
   const deleteFriend = async (id) => {
     async function fetchPOST_deleteById(target_id) {
@@ -114,7 +131,7 @@ function NewCommu() {
       // fetch("https://five610-project3-server.onrender.com/deleteById", {
       fetch("http://localhost:3001/deleteById", {
         method: "post",
-        body: data,
+        body: data
       })
         .then((res) => res.text())
         .then((txt) => {
@@ -131,24 +148,6 @@ function NewCommu() {
     }
     fetchPOST_deleteById(id);
   };
-
-  // everytime the listOfFriends state change
-  // fetch all data from database again, and rerender
-  useEffect(() => {
-    async function fetchGET_findAllFriends() {
-      // await fetch("https://five610-project3-server.onrender.com/findAllFriends")
-      await fetch("http://localhost:3001/findAllFriends")
-        .then((res) => res.json())
-        .then((txt) => {
-          setListOfFriends(txt);
-          console.log(txt);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-    fetchGET_findAllFriends();
-  }, []);
 
   return (
     <div>
@@ -179,6 +178,6 @@ function NewCommu() {
 NewCommu.propTypes = {
   listOfFriends: PropTypes.array,
   deleteFriend: PropTypes.func,
-  updateFriend: PropTypes.func,
+  updateFriend: PropTypes.func
 };
 export default NewCommu;
