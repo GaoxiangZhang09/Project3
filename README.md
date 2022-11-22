@@ -61,3 +61,6 @@ A NFT app built with React, Node.js, Express.js, MongoDB, HTML, CSS, Javascript.
 
 ## Class Link
 https://johnguerra.co/classes/webDevelopment_fall_2022/
+
+##
+We are aiming for the bonus points, so 100%code frozon here from yesterday Nov 21
