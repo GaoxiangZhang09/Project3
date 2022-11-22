@@ -1,8 +1,6 @@
-import React from 'react'
+import PageNotFound404 from "../images/PageNotFound404.png";
 
-import PageNotFound404 from "../images/PageNotFound404.png"
-
-export default function ErrorPage() {
+function ErrorPage() {
   return (
     <div>
       <h1>Opps! Page not found!</h1>
@@ -12,7 +10,7 @@ export default function ErrorPage() {
             style={{
               height: "100%",
               width: "100%",
-              objectFit: "contain",
+              objectFit: "contain"
             }}
             src={PageNotFound404}
             alt="Nice nft mining website"
@@ -20,5 +18,10 @@ export default function ErrorPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }
+
+ErrorPage.propTypes = {
+};
+
+export default ErrorPage;
