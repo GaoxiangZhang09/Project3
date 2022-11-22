@@ -14,7 +14,7 @@ into our databasem, and render in the history area below.
 A NFT app built with React, Node.js, Express.js, MongoDB, HTML, CSS, Javascript.
 
 ## Deployment URL
--[FrontEnd](https://637c51384a34eb323b172e8d--legendary-boba-b37c10.netlify.app/)
+- [FrontEnd](https://main--legendary-boba-b37c10.netlify.app/)
 
 ## Screenshots
 ### Over 1000 datas in both Mongo Atlas database collection!
