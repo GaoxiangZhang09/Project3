@@ -152,6 +152,19 @@ function NewCommu() {
 
   return (
     <div>
+      <h1>
+        Welcome to NFT-Minter! <br />
+        Instructions:
+      </h1>
+        <div className="row">
+          <p>
+            This page is designed for people who want to leave comments <br />
+            You can input your comments in the input box below, after type your <br/>
+            name and comments, Click "add comment" button will add your comments <br/>
+            into our databasem, and render in the history area below.
+          </p>
+        </div>
+    
       <input
         type="text"
         placeholder="User name..."
