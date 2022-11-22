@@ -1,4 +1,5 @@
-# [this project is submitted before Nov 22, requires 40% bonus point]
+### [this project is 100% finished andsubmitted before Nov 22, requires 40% bonus point]
+### [upload 60% milestone ontime] --> https://github.com/GaoxiangZhang09/Project3/commit/42e0f11e7804a7694b176874e8cdf16527e552c2
 # NFT-MINTER (Project3 for Class CS5610)
 This website/app is designed for people who want to Mint NFT.
 By clicking the mint button In home page, you can choose to mint 1 to 3 NFTs. Its value is initially set to 0.001 ETH.
@@ -63,8 +64,5 @@ A NFT app built with React, Node.js, Express.js, MongoDB, HTML, CSS, Javascript.
 ## Class Link
 https://johnguerra.co/classes/webDevelopment_fall_2022/
 
-## 60% mileStone
-https://github.com/GaoxiangZhang09/Project3/tree/OldMainOct
-
-## Bouns points!!! For 100% mileStone (Include 80% miileStone)
+## Bouns points!!!
 - We are aiming for the bonus points, so 100%code frozon here from yesterday Nov 21
