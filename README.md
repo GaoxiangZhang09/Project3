@@ -1,3 +1,4 @@
+# [this project is submitted before Nov 22, requires 40% bonus point]
 # NFT-MINTER (Project3 for Class CS5610)
 This website/app is designed for people who want to Mint NFT.
 By clicking the mint button In home page, you can choose to mint 1 to 3 NFTs. Its value is initially set to 0.001 ETH.
