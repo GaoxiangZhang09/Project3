@@ -17,18 +17,16 @@ A NFT app built with React, Node.js, Express.js, MongoDB, HTML, CSS, Javascript.
 
 
 ## Screenshots
-
-
 ### Home Page
-
-
-### Home Page
-
+<img width="864" alt="image" src="https://user-images.githubusercontent.com/89007851/203213551-9f65d8e8-8a48-428e-9324-814ed6d2a619.png">
+<img width="1333" alt="image" src="https://user-images.githubusercontent.com/89007851/203213664-12430c61-1e16-41e1-8720-a35112895301.png">
 
 ### Communcation Page
+<img width="1333" alt="image" src="https://user-images.githubusercontent.com/89007851/203213794-2beaf1bc-d7a2-4d32-9dc8-aeaa0a9b7ba8.png">
 
 
 ### Rubric Page
+<img width="1333" alt="image" src="https://user-images.githubusercontent.com/89007851/203213833-ad8e687d-7165-40b4-af1d-878d7aca6723.png">
 
 
 ## Instructions to build
@@ -44,18 +42,11 @@ A NFT app built with React, Node.js, Express.js, MongoDB, HTML, CSS, Javascript.
 ## Google Slides
 - [Google Slides](https://docs.google.com/presentation/d/1pAuQzJmCLsUfqcP1y4kQaer8pVzHRAzPJptdhhgeTzk/edit#slide=id.p)
 
-https://docs.google.com/presentation/d/1pAuQzJmCLsUfqcP1y4kQaer8pVzHRAzPJptdhhgeTzk/edit#slide=id.p
-
 ## Design Document
 - [Design Document](https://docs.google.com/document/d/1tqy1tNADoKdp11se8rgJYNIq1UeA40SFCziXdmGF6Cg/edit#)
 
-https://docs.google.com/document/d/1tqy1tNADoKdp11se8rgJYNIq1UeA40SFCziXdmGF6Cg/edit#
-
 ## Video
 - [Youtubu Video]（）
-
-
-
 
 ## Authors
 - Minghshu Lee
