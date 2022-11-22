@@ -17,6 +17,11 @@ A NFT app built with React, Node.js, Express.js, MongoDB, HTML, CSS, Javascript.
 -[FrontEnd](https://637c51384a34eb323b172e8d--legendary-boba-b37c10.netlify.app/)
 
 ## Screenshots
+### Over 1000 datas in both Mongo Atlas database collection!
+<img width="1102" alt="image" src="https://user-images.githubusercontent.com/89007851/203237216-77015858-1e2d-4af9-9ef7-a98bb13b260d.png">
+<img width="1102" alt="image" src="https://user-images.githubusercontent.com/89007851/203237270-d98119af-6a00-4811-81c4-4de665525264.png">
+
+
 ### Home Page
 <img width="864" alt="image" src="https://user-images.githubusercontent.com/89007851/203213551-9f65d8e8-8a48-428e-9324-814ed6d2a619.png">
 <img width="1333" alt="image" src="https://user-images.githubusercontent.com/89007851/203213664-12430c61-1e16-41e1-8720-a35112895301.png">
