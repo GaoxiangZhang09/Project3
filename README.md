@@ -63,5 +63,8 @@ A NFT app built with React, Node.js, Express.js, MongoDB, HTML, CSS, Javascript.
 ## Class Link
 https://johnguerra.co/classes/webDevelopment_fall_2022/
 
-## Bouns points!!!
+## 60% mileStone
+https://github.com/GaoxiangZhang09/Project3/tree/OldMainOct
+
+## Bouns points!!! For 100% mileStone (Include 80% miileStone)
 - We are aiming for the bonus points, so 100%code frozon here from yesterday Nov 21
