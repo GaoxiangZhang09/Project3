@@ -5,7 +5,6 @@ import { MongoClient, ObjectId } from "mongodb";
 
 function myCommuDB() {
   const myDB = {};
-  // const client = new MongoClient("mongodb+srv://wasa:nono@cluster0.zxq65pg.mongodb.net/?retryWrites=true&w=majority" || "mongodb://localhost:27017");
   const client = new MongoClient("mongodb://localhost:27017");
 
   // 連結既有 DB and Collections 以便在client.js里面用
