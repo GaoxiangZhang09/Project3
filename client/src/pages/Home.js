@@ -198,7 +198,21 @@ function Home() {
         </div>
 
         <div className="col-12">
+          <div>
+            <h2>⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣</h2>
+            <h2>The Mint Result You Got</h2>
+            <h2>⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣</h2>
+          </div>
+          <div>
+            <h3> you can go to opensea testnet to check your NFTs !!</h3>
+          </div>
           <HomeMintResult name={name} number={number} mintDate={mintDate} />
+        </div>
+
+        <div>
+          <h2>⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣</h2>
+          <h2>Mint History</h2>
+          <h2>⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣</h2>
         </div>
 
         <div className="col-12">
