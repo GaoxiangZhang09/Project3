@@ -169,9 +169,18 @@ function Home() {
       <div className="row">
         <div className="col-12">
           <p>
-            This website/app is designed for customers who want to be the vip of
-            BPQ331 <br />
-            restaurant customers who want to order online for dishes.
+            This website/app is designed for people who want to Mint NFT <br />
+            By clicking the mint button below, you can choose to mint 1 to 3
+            NFTs. Its value is initially set to 0.001 ETH. <br />
+            After you have selected it, you can click the "mint for 0.001 ETH"
+            button to connect to your mint Coinbase wallet, <br />
+            Ledger ect... Then you can confirm the purchase and put it in your
+            wallet. If you don't have these wallets, pressing <br />
+            the mint button will also display your unique fakeUsername on the
+            page, as well as your own unique id, and the time <br />
+            you minted the nft. This result will then be added to the history
+            below, and you can modify or delete the history by <br />
+            clicking UpdateName button and Delete button.
           </p>
         </div>
         <div className="col-12">
