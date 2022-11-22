@@ -1,5 +1,6 @@
 import { useState } from "react";
 function HomeMintResultItem(props) {
+
   // console.log(props.thisHistory)
   const [mouse, setMouse] = useState(false);
   const history = props.thisHistory;

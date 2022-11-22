@@ -25,15 +25,9 @@ function NewCommu() {
         method: "post",
         body: data
       })
-        // .then(()=>alert("yey it worked!"))
         .then((res) => res.text())
         .then((txt) => {
           console.log(txt);
-          setListOfFriends([
-            { name: name, comment: comment },
-            ...listOfFriends
-          ]);
-          // console.log("addFriend()",listOfFriends)
         })
         .catch((err) => {
           console.log(err);
@@ -41,6 +35,7 @@ function NewCommu() {
         });
     }
     await fetchPOST_addFriend(name, comment);
+    await fetchGET_updateAllFriends();
   };
 
   const addTonsOfFriends = async () => {
@@ -106,6 +101,28 @@ function NewCommu() {
     await fetchPOST_updateCommentById(id, newComment);
   };
 
+  async function fetchGET_updateAllFriends() {
+    // await fetch("https://five610-project3-server.onrender.com/findAllFriends")
+    await fetch("http://localhost:3001/findAllFriends")
+      .then((res) => res.json())
+      .then((txt) => {
+        setListOfFriends(txt);
+        console.log(txt);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  // everytime the listOfFriends state change
+  // fetch all data from database again, and rerender
+  useEffect(() => {
+    async function updateThis() {
+      await fetchGET_updateAllFriends();
+    }
+    updateThis();
+  }, []);
+
   // DELETE
   const deleteFriend = async (id) => {
     async function fetchPOST_deleteById(target_id) {
@@ -133,63 +150,29 @@ function NewCommu() {
     fetchPOST_deleteById(id);
   };
 
-  // everytime the listOfFriends state change
-  // fetch all data from database again, and rerender
-  useEffect(() => {
-    async function fetchGET_findAllFriends() {
-      // await fetch("https://five610-project3-server.onrender.com/findAllFriends")
-      await fetch("http://localhost:3001/findAllFriends")
-        .then((res) => res.json())
-        .then((txt) => {
-          setListOfFriends(txt);
-          console.log(txt);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-    fetchGET_findAllFriends();
-  }, []);
-
   return (
     <div>
-      <h1>
-        Welcome to NFT-Minter! <br />
-        Instructions:
-      </h1>
-      <div className="row">
-        <div className="col-12">
-          <p>
-            This page is designed for people who want to leave comments <br />
-            You can input your comments in the input box below, after type your <br/>
-            name and comments, Click "add comment" button will add your comments <br/>
-            into our databasem, and render in the history area below.
-          </p>
-        </div>
-        <div className="col-12">
-          <input
-            type="text"
-            placeholder="User name..."
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
-          />
-          <input
-            type="text"
-            placeholder="Make a comment..."
-            onChange={(e) => {
-              setComment(e.target.value);
-            }}
-          />
-          <button onClick={addFriend}>add comment</button>
-          <button onClick={addTonsOfFriends}>add Tons of comments</button>
-          <NewCommuItem
-            listOfFriends={listOfFriends}
-            deleteFriend={deleteFriend}
-            updateFriend={updateFriend}
-          />
-        </div>
-      </div>
+      <input
+        type="text"
+        placeholder="User name..."
+        onChange={(e) => {
+          setName(e.target.value);
+        }}
+      />
+      <input
+        type="text"
+        placeholder="Make a comment..."
+        onChange={(e) => {
+          setComment(e.target.value);
+        }}
+      />
+      <button onClick={addFriend}>add comment</button>
+      <button onClick={addTonsOfFriends}>add Tons of comments</button>
+      <NewCommuItem
+        listOfFriends={listOfFriends}
+        deleteFriend={deleteFriend}
+        updateFriend={updateFriend}
+      />
     </div>
   );
 }

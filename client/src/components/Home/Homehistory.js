@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+import React from "react";
 import HomeHistoryItem from "./HomeHistoryItem";
 import { nanoid } from "nanoid";
 import PropTypes from "prop-types";
@@ -25,7 +25,7 @@ function Homehistory(props) {
 }
 
 Homehistory.propTypes = {
-  thisHistory: PropTypes.object
+  thisHistory: PropTypes.object,
 };
 
 export default Homehistory;

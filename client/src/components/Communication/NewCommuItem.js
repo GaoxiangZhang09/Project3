@@ -39,7 +39,6 @@ function NewCommuItem(props) {
     </div>
   );
 }
-
 NewCommuItem.propTypes = {};
 
 export default NewCommuItem;

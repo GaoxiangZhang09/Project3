@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 import PropTypes from "prop-types"; // import propTypes from "eslint-plugin-react/lib/rules/prop-types";
 import HomePageImg from "../images/HomePageImg.jpeg";
@@ -13,7 +13,6 @@ function Home() {
   const [number, setNumber] = useState(null);
   const [mintDate, setMintDate] = useState(null);
   let [date, setDate] = useState(null);
-  let [mintHistory, setMintHistory] = useState({});
   let [mintHistorys, setMintHistorys] = useState([]);
 
   // SHOW CURRENT TIME
@@ -23,13 +22,7 @@ function Home() {
     }, 1000);
   }, []);
 
-  // SET THE NAME NUMBER AND TIME OF THIS MINT (can use to populate DB)
-  function mintResult() {
-    setNumber(nanoid());
-    setMintDate(Date());
-    setName(() => nameForUsers());
-  }
-
+  // CREATE
   const mintAlot = async () => {
     async function fetchPOST_addMint(input_name, input_number, input_date) {
       let data = new URLSearchParams();
@@ -50,13 +43,14 @@ function Home() {
     }
   };
 
-  // UPDATE THIS MINT HISTORY
-  useEffect(() => {
-    setMintHistory({ name: name, number: number, mintDate: mintDate });
-  }, [number]);
+  const mintResult = (number, date, name) => {
+    setNumber(number);
+    setMintDate(date);
+    setName(name);
+  };
 
-  // CREATE
   const addMint = async () => {
+    // SET THE NAME NUMBER AND TIME OF THIS MINT (can use to populate DB)
     async function fetchPOST_addMint(input_name, input_number, input_date) {
       let data = new URLSearchParams();
       // URLSearchParams() take the current URL and get the object after "?"
@@ -76,33 +70,37 @@ function Home() {
           console.log("it doesn't worked!");
         });
     }
-    await fetchPOST_addMint(name, number, mintDate);
+    let nameA = nameForUsers();
+    let numberA = nanoid();
+    let dateA = Date();
+    mintResult(numberA, dateA, nameA);
+    await fetchPOST_addMint(nameA, numberA, dateA);
+    await fetchGET_findAllMints();
   };
 
   // READ
   // update all mint historys
+  async function fetchGET_findAllMints() {
+    // await fetch("https://five610-project3-server.onrender.com/findAllFriends")
+    await fetch("http://localhost:3001/findAllMints")
+      .then((res) => res.json())
+      .then((txt) => {
+        setMintHistorys(txt);
+        console.log(txt);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   useEffect(() => {
-    async function fetchGET_findAllMints() {
-      // await fetch("https://five610-project3-server.onrender.com/findAllFriends")
-      await fetch("http://localhost:3001/findAllMints")
-        .then((res) => res.json())
-        .then((txt) => {
-          setMintHistorys(txt);
-          console.log(txt);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    async function updateThis() {
+      if (mintHistorys.length === 0) {
+        await fetchGET_findAllMints();
+      }
     }
-    if (mintHistorys.length === 0) {
-      fetchGET_findAllMints();
-    }
-    setMintHistorys([mintHistory, ...mintHistorys]);
-    console.log("setMintHistory");
-    if (number !== null && mintDate !== null) {
-      addMint();
-    }
-  }, [mintHistory]);
+    updateThis();
+  }, []);
 
   // UPDATE
   const updateMintNameById = async (id) => {
@@ -171,18 +169,9 @@ function Home() {
       <div className="row">
         <div className="col-12">
           <p>
-            This website/app is designed for people who want to Mint NFT <br />
-            By clicking the mint button below, you can choose to mint 1 to 3
-            NFTs. Its value is initially set to 0.001 ETH. <br />
-            After you have selected it, you can click the "mint for 0.001 ETH"
-            button to connect to your mint Coinbase wallet, <br />
-            Ledger ect... Then you can confirm the purchase and put it in your
-            wallet. If you don't have these wallets, pressing <br />
-            the mint button will also display your unique fakeUsername on the
-            page, as well as your own unique id, and the time <br />
-            you minted the nft. This result will then be added to the history
-            below, and you can modify or delete the history by <br />
-            clicking UpdateName button and Delete button.
+            This website/app is designed for customers who want to be the vip of
+            BPQ331 <br />
+            restaurant customers who want to order online for dishes.
           </p>
         </div>
         <div className="col-12">
@@ -207,14 +196,28 @@ function Home() {
 
         {/* effets happen when onClick mint btn */}
         <div className="col-12">
-          <button id="mint-button" onClick={mintResult}>
+          <button id="mint-button" onClick={addMint}>
             Mint
           </button>
           <button onClick={mintAlot}>Mint Alot</button>
         </div>
 
         <div className="col-12">
+          <div>
+            <h2>⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣</h2>
+            <h2>The Mint Result You Got</h2>
+            <h2>⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣</h2>
+          </div>
+          <div>
+            <h3> you can go to opensea testnet to check your NFTs !!</h3>
+          </div>
           <HomeMintResult name={name} number={number} mintDate={mintDate} />
+        </div>
+
+        <div>
+          <h2>⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣</h2>
+          <h2>Mint History</h2>
+          <h2>⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣</h2>
         </div>
 
         <div className="col-12">

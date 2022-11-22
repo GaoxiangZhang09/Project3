@@ -1,9 +1,5 @@
-/* eslint-disable no-unused-vars */
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import classes from "./MainNavigation.module.css";
-
-// eslint-disable-next-line no-unused-vars
-import { useContext } from "react";
 
 function MainNavigation() {
   return (
@@ -29,5 +25,4 @@ function MainNavigation() {
 }
 
 MainNavigation.propTypes = {};
-
 export default MainNavigation;

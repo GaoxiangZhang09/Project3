@@ -1361,7 +1361,7 @@ export default function Test() {
     "rocky"
   ];
 
-  var name2 = [
+  let name2 = [
     "people",
     "history",
     "way",

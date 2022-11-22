@@ -1,6 +1,4 @@
-/* eslint-disable no-unused-vars */
 import "./App.css";
-import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
