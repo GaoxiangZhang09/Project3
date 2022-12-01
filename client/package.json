@@ -44,5 +44,6 @@
     "eslint": "^8.28.0",
     "eslint-plugin-react": "^7.31.11",
     "prettier": "^2.7.1"
-  }
+  },
+  "proxy": "http://localhost:3001"
 }

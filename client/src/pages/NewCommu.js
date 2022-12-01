@@ -21,7 +21,8 @@ function NewCommu() {
       data.append("comment", input_comment);
 
       //   await fetch("https://five610-project3-server.onrender.com/addFriend", {
-      await fetch("http://localhost:3001/addFriend", {
+      console.log("will send fetch to /addFriend with this data", data);
+      await fetch("/addFriend", {
         method: "post",
         body: data
       })
@@ -47,7 +48,7 @@ function NewCommu() {
       data.append("comment", input_comment);
 
       //   await fetch("https://five610-project3-server.onrender.com/addFriend", {
-      await fetch("http://localhost:3001/addFriend", {
+      await fetch("/addFriend", {
         method: "post",
         body: data
       }).catch((err) => {
@@ -79,7 +80,7 @@ function NewCommu() {
       data.append("comment", newComment);
 
       // await fetch("https://five610-project3-server.onrender.com/updateCommentById", {
-      await fetch("http://localhost:3001/updateCommentById", {
+      await fetch("/updateCommentById", {
         method: "post",
         body: data
       })
@@ -103,7 +104,7 @@ function NewCommu() {
 
   async function fetchGET_updateAllFriends() {
     // await fetch("https://five610-project3-server.onrender.com/findAllFriends")
-    await fetch("http://localhost:3001/findAllFriends")
+    await fetch("/findAllFriends")
       .then((res) => res.json())
       .then((txt) => {
         setListOfFriends(txt);
@@ -130,7 +131,7 @@ function NewCommu() {
       data.append("_id", target_id);
 
       // fetch("https://five610-project3-server.onrender.com/deleteById", {
-      fetch("http://localhost:3001/deleteById", {
+      fetch("/deleteById", {
         method: "post",
         body: data
       })

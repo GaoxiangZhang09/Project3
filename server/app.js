@@ -4,7 +4,7 @@
 import bodyParser from "body-parser";
 import express from "express";
 import router from "./router/router.js";
-import cors from "cors";
+// import cors from "cors";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.raw());
 
 // use cors to recieve front-end http request
-app.use(cors());
+// app.use(cors());
 
 // use frontend as static file, and load index.html inside
 app.use(express.static("./frontend"));
